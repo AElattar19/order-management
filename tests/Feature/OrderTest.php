@@ -1,8 +1,6 @@
 <?php
 
-namespace Tests\Unit\Order;
-
-use PHPUnit\Framework\TestCase;
+namespace Tests\Feature;
 use App\Models\Order;
 use App\Models\User;
 use App\Events\Order\OrderCreated;
@@ -10,15 +8,13 @@ use App\Events\Order\OrderUpdated;
 use App\Events\Order\OrderDeleted;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
+
 class OrderTest extends TestCase
 {
     use RefreshDatabase;
-    
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->refreshApplication(); 
-    }
     /**
      * A basic unit test example.
      */
@@ -67,5 +63,4 @@ class OrderTest extends TestCase
 
         $this->assertDatabaseMissing('orders', ['id' => $orderId]); 
     }
-
 }
